@@ -9,30 +9,37 @@
     <div class="form-group">
         @Html.LabelFor(c => c.Hotel.Name)
         @Html.TextBoxFor(c => c.Hotel.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Hotel.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Hotel.Stars)
         @Html.TextBoxFor(c => c.Hotel.Stars, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Hotel.Stars)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Hotel.CountryId)
-        @Html.DropDownListFor(m => m.Hotel.CountryId, new SelectList(Model.Countries, "Id", "Name"), "")
+        @Html.DropDownListFor(m => m.Hotel.CountryId, new SelectList(Model.Countries, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Hotel.CountryId)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Hotel.City)
         @Html.TextBoxFor(c => c.Hotel.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Hotel.City)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Hotel.PricePerNight)
         @Html.TextBoxFor(c => c.Hotel.PricePerNight, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Hotel.PricePerNight)
     </div>
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.Hotel.IsAllInclusive) Allinclusive?
+            @Html.ValidationMessageFor(c => c.Hotel.IsAllInclusive)
         </label>
     </div>
 
     @Html.HiddenFor(c => c.Hotel.Id)
+    @Html.AntiForgeryToken()
 
     <button type="submit" class="btn btn-primary">Save</button>
 }

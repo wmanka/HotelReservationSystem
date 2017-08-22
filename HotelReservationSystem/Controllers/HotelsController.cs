@@ -56,6 +56,7 @@ namespace HotelReservationSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Hotel hotel)
         {
             if(!ModelState.IsValid)

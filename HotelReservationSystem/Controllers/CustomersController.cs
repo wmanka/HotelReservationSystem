@@ -44,8 +44,14 @@ namespace HotelReservationSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Form", customer);
+            }
+
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
             else

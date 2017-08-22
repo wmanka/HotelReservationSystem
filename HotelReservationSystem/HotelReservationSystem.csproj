@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201708221443094_PopulateCounries.Designer.cs">
       <DependentUpon>201708221443094_PopulateCounries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708222335015_ChangedModels.cs" />
+    <Compile Include="Migrations\201708222335015_ChangedModels.Designer.cs">
+      <DependentUpon>201708222335015_ChangedModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Country.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708221443094_PopulateCounries.resx">
       <DependentUpon>201708221443094_PopulateCounries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708222335015_ChangedModels.resx">
+      <DependentUpon>201708222335015_ChangedModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

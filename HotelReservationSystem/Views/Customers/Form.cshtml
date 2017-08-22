@@ -11,12 +11,16 @@
     <div class="form-group">
         @Html.LabelFor(c => c.Name)
         @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Birthdate)
         @Html.TextBoxFor(m => m.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Birthdate)
     </div>
+
     @Html.HiddenFor(c => c.Id)
+    @Html.AntiForgeryToken()
 
     <button type="submit" class="btn btn-primary">Save</button>
 }
