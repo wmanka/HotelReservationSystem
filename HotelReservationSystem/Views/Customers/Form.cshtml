@@ -1,0 +1,23 @@
+﻿@model HotelReservationSystem.Models.Customer
+
+@{
+    ViewBag.Title = "CustomerForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Birthdate)
+        @Html.TextBoxFor(m => m.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(c => c.Id)
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
