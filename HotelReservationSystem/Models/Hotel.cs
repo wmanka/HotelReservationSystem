@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +14,7 @@ namespace HotelReservationSystem.Models
 
         public Country Country { get; set; }
 
+        [Display(Name = "Country")]
         public int CountryId { get; set; }
 
         public string City { get; set; }

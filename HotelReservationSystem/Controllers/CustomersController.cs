@@ -58,7 +58,6 @@ namespace HotelReservationSystem.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
-
         }
     }
 }

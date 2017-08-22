@@ -1,0 +1,39 @@
+﻿@model HotelReservationSystem.ViewModels.HotelViewModel
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Hotels"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Hotel.Name)
+        @Html.TextBoxFor(c => c.Hotel.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Hotel.Stars)
+        @Html.TextBoxFor(c => c.Hotel.Stars, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Hotel.CountryId)
+        @Html.DropDownListFor(m => m.Hotel.CountryId, new SelectList(Model.Countries, "Id", "Name"), "")
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Hotel.City)
+        @Html.TextBoxFor(c => c.Hotel.City, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Hotel.PricePerNight)
+        @Html.TextBoxFor(c => c.Hotel.PricePerNight, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Hotel.IsAllInclusive) Allinclusive?
+        </label>
+    </div>
+
+    @Html.HiddenFor(c => c.Hotel.Id)
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
