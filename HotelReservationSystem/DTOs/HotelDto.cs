@@ -17,6 +17,8 @@ namespace HotelReservationSystem.DTOs
         [Required]
         public int CountryId { get; set; }
 
+        public CountryDto Country { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string City { get; set; }

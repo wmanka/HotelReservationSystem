@@ -14,6 +14,8 @@ namespace HotelReservationSystem.App_Start
         {
             Mapper.CreateMap<Hotel, HotelDto>();
             Mapper.CreateMap<HotelDto, Hotel>();
+
+            Mapper.CreateMap<Country, CountryDto>();
         }
     }
 }

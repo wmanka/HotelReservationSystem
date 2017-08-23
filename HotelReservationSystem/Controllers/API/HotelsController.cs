@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace HotelReservationSystem.Controllers.API
 {
@@ -20,7 +21,10 @@ namespace HotelReservationSystem.Controllers.API
 
         public IEnumerable<HotelDto> GetHotels()
         {
-            return _context.Hotels.ToList().Select(Mapper.Map<Hotel, HotelDto>);
+            return _context.Hotels
+                .Include(c => c.Country)
+                .ToList()
+                .Select(Mapper.Map<Hotel, HotelDto>);
         }
 
         public IHttpActionResult GetHotel(int id)
