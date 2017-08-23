@@ -23,7 +23,30 @@
 {
     <script>
         $(document).ready(function () {
-            $("#customers").DataTable();
+            $("#customers").DataTable(
+                {
+                    ajax:
+                    {
+                        url: "/api/customers",
+                        dataSrc: ""
+                    },
+                    columns:
+                    [
+                        {
+                            data: "Name",
+                            render: function (data, type, customer)
+                            {
+                                return "<a href='/customers/edit/" + customer.Id + "'>" + customer.Name + "</a>";
+                            }
+                        },
+                        {
+                            data: "Birthdate",
+                        },
+                        {
+                            data: "Id",
+                        }
+                    ]
+                })
             
         });
     </script>
