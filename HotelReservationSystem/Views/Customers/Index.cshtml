@@ -4,4 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h3 class="page-header">All Customers</h3>
+
+<table id="customers" class=" table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#customers").DataTable();
+            
+        });
+    </script>
+}
+
 
