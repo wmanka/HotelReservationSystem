@@ -226,9 +226,9 @@
     <Compile Include="Migrations\201708222335015_ChangedModels.Designer.cs">
       <DependentUpon>201708222335015_ChangedModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708240912525_SeedUsers.cs" />
-    <Compile Include="Migrations\201708240912525_SeedUsers.Designer.cs">
-      <DependentUpon>201708240912525_SeedUsers.cs</DependentUpon>
+    <Compile Include="Migrations\201708241134284_SeedUsers1.cs" />
+    <Compile Include="Migrations\201708241134284_SeedUsers1.Designer.cs">
+      <DependentUpon>201708241134284_SeedUsers1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -475,8 +475,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Form.cshtml" />
-    <Content Include="Views\Hotels\Index.cshtml" />
+    <Content Include="Views\Hotels\List.cshtml" />
     <Content Include="Views\Hotels\Form.cshtml" />
+    <Content Include="Views\Hotels\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -506,8 +507,8 @@
     <EmbeddedResource Include="Migrations\201708222335015_ChangedModels.resx">
       <DependentUpon>201708222335015_ChangedModels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708240912525_SeedUsers.resx">
-      <DependentUpon>201708240912525_SeedUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708241134284_SeedUsers1.resx">
+      <DependentUpon>201708241134284_SeedUsers1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace HotelReservationSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SeedUsers : IMigrationMetadata
+    public sealed partial class SeedUsers1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedUsers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedUsers1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708240912525_SeedUsers"; }
+            get { return "201708241134284_SeedUsers1"; }
         }
         
         string IMigrationMetadata.Source

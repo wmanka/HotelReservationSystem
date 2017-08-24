@@ -156,10 +156,12 @@ namespace HotelReservationSystem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    /* var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    /* Creating Admin
+                     * 
+                     * var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("CanManageBooks"));
-                    await UserManager.AddToRoleAsync(user.Id, "CanManageBooks"); */
+                    await roleManager.CreateAsync(new IdentityRole("CanManageHotels"));
+                    await UserManager.AddToRoleAsync(user.Id, "CanManageHotels"); */
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

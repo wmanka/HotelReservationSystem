@@ -23,7 +23,10 @@ namespace HotelReservationSystem.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole("CanManageHotels"))
+                return View("List");
+
+            return View("ReadOnlyList");
         }
 
         public ActionResult New()
