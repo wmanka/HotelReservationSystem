@@ -23,12 +23,13 @@ namespace HotelReservationSystem.Controllers
 
         public ActionResult Index()
         {
-            if (User.IsInRole("CanManageHotels"))
+            if (User.IsInRole(RoleName.CanManageHotels))
                 return View("List");
 
             return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public ActionResult New()
         {
             var countries = _context.Countries.ToList();
