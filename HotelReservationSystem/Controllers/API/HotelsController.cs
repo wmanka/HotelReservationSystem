@@ -19,6 +19,7 @@ namespace HotelReservationSystem.Controllers.API
             _context = new ApplicationDbContext();
         }
 
+        [AllowAnonymous]
         public IEnumerable<HotelDto> GetHotels()
         {
             return _context.Hotels
@@ -27,6 +28,7 @@ namespace HotelReservationSystem.Controllers.API
                 .Select(Mapper.Map<Hotel, HotelDto>);
         }
 
+        [AllowAnonymous]
         public IHttpActionResult GetHotel(int id)
         {
             var hotel = _context.Hotels.SingleOrDefault(c => c.Id == id);
@@ -38,6 +40,7 @@ namespace HotelReservationSystem.Controllers.API
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public IHttpActionResult CreateHotel (HotelDto hotelDto)
         {
             if (!ModelState.IsValid)
@@ -54,6 +57,7 @@ namespace HotelReservationSystem.Controllers.API
         }
 
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public void UpdateHotel(int id, HotelDto hotelDto)
         {
             if (!ModelState.IsValid)
@@ -70,6 +74,7 @@ namespace HotelReservationSystem.Controllers.API
         }
 
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public void DeleteHotel(int id)
         {
             var hotel = _context.Hotels.SingleOrDefault(c => c.Id == id);

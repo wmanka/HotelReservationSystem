@@ -20,7 +20,7 @@ namespace HotelReservationSystem.Controllers
             _context.Dispose();
         }
 
-
+        [AllowAnonymous]
         public ActionResult Index()
         {
             if (User.IsInRole(RoleName.CanManageHotels))
@@ -43,6 +43,7 @@ namespace HotelReservationSystem.Controllers
             return View("Form", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public ActionResult Edit(int id)
         {
             var hotel = _context.Hotels.SingleOrDefault(h => h.Id == id);
@@ -61,6 +62,7 @@ namespace HotelReservationSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public ActionResult Save(Hotel hotel)
         {
             if(!ModelState.IsValid)
