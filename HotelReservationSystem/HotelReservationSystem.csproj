@@ -214,6 +214,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hidden\FacebookData.cs" />
     <Compile Include="Migrations\201708221336279_InitialModel.cs" />
     <Compile Include="Migrations\201708221336279_InitialModel.Designer.cs">
       <DependentUpon>201708221336279_InitialModel.cs</DependentUpon>

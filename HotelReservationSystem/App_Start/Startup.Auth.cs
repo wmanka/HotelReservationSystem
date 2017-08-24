@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using HotelReservationSystem.Models;
+using HotelReservationSystem.Hidden;
 
 namespace HotelReservationSystem
 {
@@ -54,9 +55,10 @@ namespace HotelReservationSystem
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: FacebookData.AppId,
+               appSecret: FacebookData.AppSecret
+            );
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
