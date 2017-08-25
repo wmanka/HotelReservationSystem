@@ -220,12 +220,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\API\HotelsController.cs" />
+    <Compile Include="Controllers\API\NewOrdersController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="DTOs\CountryDto.cs" />
     <Compile Include="DTOs\HotelDto.cs" />
+    <Compile Include="DTOs\NewOrderDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -251,6 +254,10 @@
     <Compile Include="Migrations\201708242017489_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201708242017489_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708251505280_AddOrdersTable.cs" />
+    <Compile Include="Migrations\201708251505280_AddOrdersTable.Designer.cs">
+      <DependentUpon>201708251505280_AddOrdersTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Country.cs" />
@@ -258,6 +265,7 @@
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -500,6 +508,7 @@
     <Content Include="Views\Hotels\List.cshtml" />
     <Content Include="Views\Hotels\Form.cshtml" />
     <Content Include="Views\Hotels\ReadOnlyList.cshtml" />
+    <Content Include="Views\Orders\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -534,6 +543,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708242017489_AddPhoneToApplicationUser.resx">
       <DependentUpon>201708242017489_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708251505280_AddOrdersTable.resx">
+      <DependentUpon>201708251505280_AddOrdersTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
