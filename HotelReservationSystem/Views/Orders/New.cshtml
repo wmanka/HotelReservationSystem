@@ -6,7 +6,7 @@
 
 <h2>New Order</h2>
 
-<form>
+<form id="newOrder">
     <div class="form-group">
         <label>Customer</label>
         <input id="customer" type="text" value="" class="form-control"/>
@@ -19,12 +19,12 @@
 
     <div class="form-group">
         <label>Start Date</label>
-        <input type="datetime" value="" class="form-control" />
+        <input id="startDate" type="datetime" value="" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>End date</label>
-        <input type="datetime" value="" class="form-control" />
+        <input id="endDate" type="datetime" value="" class="form-control" />
     </div>
 
     <button class="btn btn-primary">Submit</button>
@@ -33,6 +33,12 @@
 {
 <script>
     $(document).ready(function () {
+
+        var vm =
+            {
+        };
+
+        // CUSTOMERS
         var customers = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -42,14 +48,15 @@
             }
         });
 
-        $('#customer').typeahead(null, {
+        $('#customer').typeahead({ minLength: 1, highlight: true }, {
             name: 'customers',
             display: 'Name',
             source: customers
+        }).on("typeahead:select", function (e, customer) {
+            vm.CustomerId = customer.Id;
         });
 
-
-
+        // HOTELS
         var hotels = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -59,10 +66,39 @@
             }
         });
 
-        $('#hotel').typeahead(null, {
+        $('#hotel').typeahead({ minLength: 1, highlight: true }, {
             name: 'hotels',
             display: 'Name',
             source: hotels
+        }).on("typeahead:select", function (e, hotel) {
+            vm.HotelId = hotel.Id;
+        });
+
+        // SUBMIT
+        $("#newOrder").submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "/api/NewOrders",
+                type: "POST",
+                data: vm
+            })
+                .done(function () {
+                    console.log("success");
+                })
+                .fail(function () {
+
+                });
+
+        })
+
+        // DATES
+        $(document).on('change keyup paste', "#startDate", function () {
+            vm.StartDate = $(this).val();
+        });
+
+        $(document).on('change keyup paste', "#endDate", function () {
+            vm.EndDate = $(this).val();
         });
 
     });

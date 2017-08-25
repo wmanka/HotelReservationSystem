@@ -24,12 +24,20 @@ namespace HotelReservationSystem.Controllers.API
             return _context.Orders.ToList();
         }
 
+
+        public Order GetOrder(int id)
+        {
+            return _context.Orders.Single(c => c.Id == id);
+        }
+
         [HttpPost]
         public IHttpActionResult CreateNewOrder(NewOrderDto newOrder)
         {
             var customer = _context.Customers.Single(c => c.Id == newOrder.CustomerId);
 
             var hotel = _context.Hotels.Single(c => c.Id == newOrder.HotelId);
+
+            var numOfDays = Convert.ToInt32((newOrder.EndDate - newOrder.StartDate).TotalDays);
 
             var order = new Order()
             {
@@ -38,7 +46,7 @@ namespace HotelReservationSystem.Controllers.API
                 DateOrdered = DateTime.Now,
                 StartDate = newOrder.StartDate,
                 EndDate = newOrder.EndDate,
-                NumberOfDays = newOrder.NumberOfDays
+                NumberOfDays = numOfDays
             };
 
             _context.Orders.Add(order);
