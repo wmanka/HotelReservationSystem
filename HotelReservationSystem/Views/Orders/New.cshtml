@@ -9,12 +9,12 @@
 <form>
     <div class="form-group">
         <label>Customer</label>
-        <input type="text" value="" class="form-control"/>
+        <input id="customer" type="text" value="" class="form-control"/>
     </div>
 
     <div class="form-group">
         <label>Hotel</label>
-        <input type="text" value="" class="form-control" />
+        <input id="hotel" type="text" value="" class="form-control" />
     </div>
 
     <div class="form-group">
@@ -29,4 +29,43 @@
 
     <button class="btn btn-primary">Submit</button>
 </form>
+@section scripts
+{
+<script>
+    $(document).ready(function () {
+        var customers = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/api/Customers?query=%QUERY',
+                wildcard: '%QUERY'
+            }
+        });
+
+        $('#customer').typeahead(null, {
+            name: 'customers',
+            display: 'Name',
+            source: customers
+        });
+
+
+
+        var hotels = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/api/Hotels?query=%QUERY',
+                wildcard: '%QUERY'
+            }
+        });
+
+        $('#hotel').typeahead(null, {
+            name: 'hotels',
+            display: 'Name',
+            source: hotels
+        });
+
+    });
+</script>
+    }
 

@@ -14,7 +14,8 @@ namespace HotelReservationSystem
                         "~/Scripts/bootbox.js",
                         "~/Scripts/respond.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap.js"
+                        "~/Scripts/DataTables/dataTables.bootstrap.js",
+                        "~/Scripts/typeahead.bundle.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -28,6 +29,7 @@ namespace HotelReservationSystem
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flatty.css",
                       "~/Content/DataTables/css/dataTables.bootstrap.css",
+                      "~/Content/Typeahead.css",
                       "~/Content/site.css"));
         }
     }
