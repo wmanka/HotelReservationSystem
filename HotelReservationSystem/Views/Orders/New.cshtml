@@ -91,9 +91,10 @@
                 })
                     .done(function () {
                         console.log("success");
+                        toastr.success("Order successfully recorded.");
                     })
                     .fail(function () {
-
+                        toastr.error("Something unexpected happened.");
                     });
 
             })
