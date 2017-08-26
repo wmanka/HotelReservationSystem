@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "New Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,100 +7,106 @@
 
 <form id="newOrder">
     <div class="form-group">
-        <label>Customer</label>
-        <input id="customer" type="text" value="" class="form-control"/>
+        <div class="tt-container">
+            <label>Customer</label>
+            <input id="customer" required type="text" value="" class="form-control" />
+        </div>
     </div>
 
     <div class="form-group">
-        <label>Hotel</label>
-        <input id="hotel" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <label>Hotel</label>
+            <input id="hotel" required type="text" value="" class="form-control" />
+        </div>
     </div>
 
     <div class="form-group">
         <label>Start Date</label>
-        <input id="startDate" type="datetime" value="" class="form-control" />
+        <input id="startDate" required type="datetime" value="" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>End date</label>
-        <input id="endDate" type="datetime" value="" class="form-control" />
+        <input id="endDate" required type="datetime" value="" class="form-control" />
     </div>
 
     <button class="btn btn-primary">Submit</button>
 </form>
 @section scripts
 {
-<script>
-    $(document).ready(function () {
+    @Scripts.Render("~/bundles/jqueryval")
 
-        var vm =
-            {
-        };
+    <script>
+        $(document).ready(function () {
 
-        // CUSTOMERS
-        var customers = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: '/api/Customers?query=%QUERY',
-                wildcard: '%QUERY'
-            }
-        });
+            var vm =
+                {
+                };
 
-        $('#customer').typeahead({ minLength: 1, highlight: true }, {
-            name: 'customers',
-            display: 'Name',
-            source: customers
-        }).on("typeahead:select", function (e, customer) {
-            vm.CustomerId = customer.Id;
-        });
+            // CUSTOMERS
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/Customers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
 
-        // HOTELS
-        var hotels = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: '/api/Hotels?query=%QUERY',
-                wildcard: '%QUERY'
-            }
-        });
+            $('#customer').typeahead({ minLength: 1, highlight: true }, {
+                name: 'customers',
+                display: 'Name',
+                source: customers
+            }).on("typeahead:select", function (e, customer) {
+                vm.CustomerId = customer.Id;
+            });
 
-        $('#hotel').typeahead({ minLength: 1, highlight: true }, {
-            name: 'hotels',
-            display: 'Name',
-            source: hotels
-        }).on("typeahead:select", function (e, hotel) {
-            vm.HotelId = hotel.Id;
-        });
+            // HOTELS
+            var hotels = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/Hotels?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
 
-        // SUBMIT
-        $("#newOrder").submit(function (e) {
-            e.preventDefault();
+            $('#hotel').typeahead({ minLength: 1, highlight: true }, {
+                name: 'hotels',
+                display: 'Name',
+                source: hotels
+            }).on("typeahead:select", function (e, hotel) {
+                vm.HotelId = hotel.Id;
+            });
 
-            $.ajax({
-                url: "/api/NewOrders",
-                type: "POST",
-                data: vm
-            })
-                .done(function () {
-                    console.log("success");
+            // SUBMIT
+            $("#newOrder").submit(function (e) {
+                $("#newOrder").valid();
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/api/NewOrders",
+                    type: "POST",
+                    data: vm
                 })
-                .fail(function () {
+                    .done(function () {
+                        console.log("success");
+                    })
+                    .fail(function () {
 
-                });
+                    });
 
-        })
+            })
 
-        // DATES
-        $(document).on('change keyup paste', "#startDate", function () {
-            vm.StartDate = $(this).val();
+            // DATES
+            $(document).on('change keyup paste', "#startDate", function () {
+                vm.StartDate = $(this).val();
+            });
+
+            $(document).on('change keyup paste', "#endDate", function () {
+                vm.EndDate = $(this).val();
+            });
+
         });
-
-        $(document).on('change keyup paste', "#endDate", function () {
-            vm.EndDate = $(this).val();
-        });
-
-    });
-</script>
-    }
-
+    </script>
+}
