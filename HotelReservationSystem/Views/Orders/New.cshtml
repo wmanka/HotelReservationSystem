@@ -7,16 +7,16 @@
 
 <form id="newOrder">
     <div class="form-group">
-        <div class="tt-container">
             <label>Customer</label>
-            <input id="customer" required type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
-        <div class="tt-container">
             <label>Hotel</label>
-            <input id="hotel" required type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="hotel" name="hotel" data-rule-validHotel="true" required type="text" value="" class="form-control" />
         </div>
     </div>
 
@@ -79,25 +79,31 @@
                 vm.HotelId = hotel.Id;
             });
 
-            // SUBMIT
-            $("#newOrder").submit(function (e) {
-                $("#newOrder").valid();
-                e.preventDefault();
+            $.validator.addMethod("validCustomer", function () {
+                return vm.CustomerId && vm.CustomerId !== 0;
+            }, "Please select a valid customer.");
 
-                $.ajax({
-                    url: "/api/NewOrders",
-                    type: "POST",
-                    data: vm
-                })
-                    .done(function () {
-                        console.log("success");
-                        toastr.success("Order successfully recorded.");
+            $.validator.addMethod("validHotel", function () {
+                return vm.HotelId && vm.HotelId !== 0;
+            }, "Please select a valid hotel.");
+
+            $("#newOrder").validate({
+                submitHandler: function () {
+                    $.ajax({
+                        url: "/api/NewOrders",
+                        type: "POST",
+                        data: vm
                     })
-                    .fail(function () {
-                        toastr.error("Something unexpected happened.");
-                    });
-
-            })
+                        .done(function () {
+                            console.log("success");
+                            toastr.success("Order successfully recorded.");
+                        })
+                        .fail(function () {
+                            toastr.error("Something unexpected happened.");
+                        });
+                    return false;
+                }
+            });
 
             // DATES
             $(document).on('change keyup paste', "#startDate", function () {
