@@ -1720,8 +1720,9 @@
                     suggestions = suggestions || [];
                     if (!canceled && rendered < that.limit) {
                         that.cancel = $.noop;
-                        rendered += suggestions.length;
-                        that._append(query, suggestions.slice(0, that.limit - rendered));
+                        suggestions = (suggestions || []).slice(0, that.limit);
+                        rendered = suggestions.length;
+                        that._append(query, suggestions);
                         that.async && that.trigger("asyncReceived", query);
                     }
                 }
