@@ -26,5 +26,7 @@ namespace HotelReservationSystem.Models
         public DateTime EndDate { get; set; }
 
         public int NumberOfDays { get; set; }
+
+        public double FullPrice { get; set; }
     }
 }

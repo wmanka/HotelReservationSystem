@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201708251505280_AddOrdersTable.Designer.cs">
       <DependentUpon>201708251505280_AddOrdersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708271046586_AddFullPricePropertyToOrderTable.cs" />
+    <Compile Include="Migrations\201708271046586_AddFullPricePropertyToOrderTable.Designer.cs">
+      <DependentUpon>201708271046586_AddFullPricePropertyToOrderTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Country.cs" />
@@ -402,6 +406,7 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -559,6 +564,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708251505280_AddOrdersTable.resx">
       <DependentUpon>201708251505280_AddOrdersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271046586_AddFullPricePropertyToOrderTable.resx">
+      <DependentUpon>201708271046586_AddFullPricePropertyToOrderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

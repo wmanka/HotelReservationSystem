@@ -39,6 +39,8 @@ namespace HotelReservationSystem.Controllers.API
 
             var numOfDays = Convert.ToInt32((newOrder.EndDate - newOrder.StartDate).TotalDays);
 
+            var fullPrice = Math.Round((hotel.PricePerNight * numOfDays), 2);
+
             var order = new Order()
             {
                 Customer = customer,
@@ -46,7 +48,8 @@ namespace HotelReservationSystem.Controllers.API
                 DateOrdered = DateTime.Now,
                 StartDate = newOrder.StartDate,
                 EndDate = newOrder.EndDate,
-                NumberOfDays = numOfDays
+                NumberOfDays = numOfDays,
+                FullPrice = fullPrice
             };
 
             _context.Orders.Add(order);
