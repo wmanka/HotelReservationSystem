@@ -8,7 +8,17 @@ namespace HotelReservationSystem.Controllers
 {
     public class OrdersController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult New()
+        {
+            return View();
+        }
+
+        public ActionResult Details(int id)
         {
             return View();
         }

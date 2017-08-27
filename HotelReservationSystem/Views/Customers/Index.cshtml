@@ -6,6 +6,11 @@
 
 <h3 class="page-header">All Customers</h3>
 
+<div>
+    @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
+</div>
+<br />
+
 <table id="customers" class=" table table-bordered table-hover">
     <thead>
         <tr>
@@ -66,6 +71,7 @@
                                 method: "DELETE",
                                 success: function () {
                                     button.parents("tr").remove();
+                                    toastr.success("Customer successfully removed.");
                                 }
                             });
                     }

@@ -94,31 +94,35 @@
 
             var validator = $("#newOrder").validate({
                 submitHandler: function () {
-                    $.ajax({
-                        url: "/api/NewOrders",
-                        type: "POST",
-                        data: vm
+                    bootbox.confirm("Are you sure you want to book this hotel?" + vm.CustomerId.name, function (result) {
+                        if (result)
+                        {
+                            $.ajax({
+                                url: "/api/NewOrders",
+                                type: "POST",
+                                data: vm
+                            })
+                                .done(function () {
+
+                                    console.log("success");
+                                    toastr.success("Order successfully recorded.");
+
+                                    $("#customer").typeahead("val", "");
+                                    $("#hotel").typeahead("val", "");
+                                    $("#startDate").val('');
+                                    $("#endDate").val('');
+
+                                    vm = {};
+
+                                    validator.resetForm();
+
+                                })
+                                .fail(function () {
+                                    toastr.error("Something unexpected happened.");
+                                });
+                        }
                     })
-                        .done(function () {
 
-
-
-                            console.log("success");
-                            toastr.success("Order successfully recorded.");
-
-                            $("#customer").typeahead("val", "");
-                            $("#hotel").typeahead("val", "");
-                            $("#startDate").val('');
-                            $("#endDate").val('');
-
-                            vm = {};
-
-                            validator.resetForm();
-
-                        })
-                        .fail(function () {
-                            toastr.error("Something unexpected happened.");
-                        });
                     return false;
                 }
             });

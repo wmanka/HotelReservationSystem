@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="page-header">All Orders</h3>
+
+<div>
+    @Html.ActionLink("New Order", "New", "Orders", null, new { @class = "btn btn-primary" })
+</div>
+<br />
+
+<table id="orders" class=" table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Hotel</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Full Price</th>
+            <th>Date Ordered</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#orders").DataTable(
+                {
+                    ajax:
+                    {
+                        url: "/api/NewOrders",
+                        dataSrc: ""
+                    },
+                    columns:
+                    [
+                        {
+                            data: "Customer.Name",
+                        },
+                        {
+                            data: "Hotel.Name",
+                        },
+                        {
+                            data: "StartDate",
+                        },
+                        {
+                            data: "EndDate",
+                        },
+                        {
+                            data: "FullPrice",
+                        },
+                        {
+                            data: "DateOrdered",
+
+                        },
+                        {
+                            data: "Id",
+                            render: function (data)
+                            {
+                                return "<button class='btn-link js-delete' data-order-id=" + data + ">Delete</button>";
+                            }
+                        }
+                    ]
+                })
+
+
+
+            $("#orders").on('click', '.js-delete', function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this order?", function (result) {
+                    if (result)
+                    {
+                        $.ajax(
+                            {
+                                url: "/api/NewOrders/" + button.attr("data-order-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    button.parents("tr").remove();
+                                    toastr.success("Order successfully removed.");
+                                }
+                            });
+                    }
+                }); 
+            }); 
+        });
+    </script>
+}
+

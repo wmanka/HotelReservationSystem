@@ -527,6 +527,8 @@
     <Content Include="Views\Hotels\Form.cshtml" />
     <Content Include="Views\Hotels\ReadOnlyList.cshtml" />
     <Content Include="Views\Orders\New.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
