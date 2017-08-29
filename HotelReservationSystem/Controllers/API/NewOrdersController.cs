@@ -20,12 +20,13 @@ namespace HotelReservationSystem.Controllers.API
             _context = new ApplicationDbContext();
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public IEnumerable<Order> GetOrders()
         {
             return _context.Orders.Include(c => c.Customer).Include(c => c.Hotel).ToList();
         }
 
-
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public Order GetOrder(int id)
         {
             return _context.Orders.Single(c => c.Id == id);

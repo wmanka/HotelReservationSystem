@@ -16,11 +16,13 @@ namespace HotelReservationSystem.Controllers.API
             _context = new ApplicationDbContext();
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public IEnumerable<Customer> GetCustomers()
         {
             return _context.Customers.ToList();
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -32,6 +34,7 @@ namespace HotelReservationSystem.Controllers.API
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public IHttpActionResult CreateCustomer(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -44,6 +47,7 @@ namespace HotelReservationSystem.Controllers.API
         }
 
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public void UpdateCustomer(int id, Customer customer)
         {
             if (!ModelState.IsValid)
@@ -61,6 +65,7 @@ namespace HotelReservationSystem.Controllers.API
         }
 
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public void DeleteCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);

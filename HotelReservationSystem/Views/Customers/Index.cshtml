@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3 class="page-header">All Customers</h3>
+<h3 class="page-header">Customers</h3>
 
 <div>
     @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
@@ -46,6 +46,14 @@
                         },
                         {
                             data: "Birthdate",
+                            render: function (data, type)
+                            {
+                                var m = data.split(/[T-]/);
+                                var d = new Date(parseInt(m[0]), parseInt(m[1]), parseInt(m[2]));
+
+                                var formatedDate = d.getFullYear() + '.' + d.getMonth() + '.' + d.getDate();
+                                return "<div>" + formatedDate + "</div>";
+                            }
                         },
                         {
                             data: "Id",

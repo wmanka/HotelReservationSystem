@@ -20,12 +20,13 @@ namespace HotelReservationSystem.Controllers
             _context.Dispose();
         }
 
-
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public ActionResult New()
         {
             var customer = new Customer();
@@ -33,6 +34,7 @@ namespace HotelReservationSystem.Controllers
             return View("Form", customer);
         }
 
+        [Authorize(Roles = RoleName.CanManageHotels)]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -44,6 +46,7 @@ namespace HotelReservationSystem.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageHotels)]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {

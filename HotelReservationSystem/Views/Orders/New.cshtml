@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Order</h2>
+<h3>New Order</h3>
 
 <form id="newOrder">
     <div class="form-group">
@@ -94,7 +94,7 @@
 
             var validator = $("#newOrder").validate({
                 submitHandler: function () {
-                    bootbox.confirm("Are you sure you want to book this hotel?" + vm.CustomerId.name, function (result) {
+                    bootbox.confirm("Are you sure you want to place this order?", function (result) {
                         if (result)
                         {
                             $.ajax({

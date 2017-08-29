@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3 class="page-header">All Orders</h3>
+<h3 class="page-header">Orders</h3>
 
 <div>
     @Html.ActionLink("New Order", "New", "Orders", null, new { @class = "btn btn-primary" })
@@ -48,15 +48,36 @@
                         },
                         {
                             data: "StartDate",
+                            render: function (data, type) {
+                                var m = data.split(/[T-]/);
+                                var d = new Date(parseInt(m[0]), parseInt(m[1]), parseInt(m[2]));
+
+                                var formatedDate = d.getFullYear() + '.' + d.getMonth() + '.' + d.getDate();
+                                return "<div>" + formatedDate + "</div>";
+                            }
                         },
                         {
                             data: "EndDate",
+                            render: function (data, type) {
+                                var m = data.split(/[T-]/);
+                                var d = new Date(parseInt(m[0]), parseInt(m[1]), parseInt(m[2]));
+
+                                var formatedDate = d.getFullYear() + '.' + d.getMonth() + '.' + d.getDate();
+                                return "<div>" + formatedDate + "</div>";
+                            }
                         },
                         {
                             data: "FullPrice",
                         },
                         {
                             data: "DateOrdered",
+                            render: function (data, type) {
+                                var m = data.split(/[T-]/);
+                                var d = new Date(parseInt(m[0]), parseInt(m[1]), parseInt(m[2]));
+
+                                var formatedDate = d.getFullYear() + '.' + d.getMonth() + '.' + d.getDate();
+                                return "<div>" + formatedDate + "</div>";
+                            }
 
                         },
                         {
