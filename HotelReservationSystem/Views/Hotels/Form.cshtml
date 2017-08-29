@@ -22,6 +22,7 @@
         @Html.LabelFor(c => c.Hotel.CountryId)
         @Html.DropDownListFor(m => m.Hotel.CountryId, new SelectList(Model.Countries, "Id", "Name"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(c => c.Hotel.CountryId)
+        @Html.ActionLink("Add new country", "NewCountry", "Hotels", null, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Hotel.City)

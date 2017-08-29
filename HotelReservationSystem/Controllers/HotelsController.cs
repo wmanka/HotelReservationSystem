@@ -93,5 +93,35 @@ namespace HotelReservationSystem.Controllers
 
             return RedirectToAction("Index", "Hotels");
         }
+
+        public ActionResult NewCountry()
+        {
+            var country = new Country();
+
+            return View("NewCountryForm", country);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageHotels)]
+        public ActionResult SaveCountry(Country country)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("NewCountryForm", country);
+            }
+
+            if (country.Id == 0)
+                _context.Countries.Add(country);
+            else
+            {
+                var countryInDb = _context.Countries.Single(c => c.Id == country.Id);
+                countryInDb.Name = country.Name;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("New", "Hotels");
+        }
     }
 }

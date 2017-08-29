@@ -1,0 +1,23 @@
+﻿@model HotelReservationSystem.Models.Country
+
+@{
+    ViewBag.Title = "NewCountryForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Add New Country</h3>
+
+@using (Html.BeginForm("SaveCountry", "Hotels"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Name)
+    </div>
+
+    @Html.HiddenFor(c => c.Id)
+    @Html.AntiForgeryToken()
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
