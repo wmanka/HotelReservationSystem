@@ -7,7 +7,12 @@ namespace HotelReservationSystem.Hidden
 {
 	public static class FacebookData
 	{
-        public static string AppId = "125096521477596";
-        public static string AppSecret = "1c21d471c658034de2441f5257074481";
+        // TODO: Go to facebook developer page https://developers.facebook.com/
+        // Register or log in
+        // My Apps -> Add new app (Web)
+        // Paste your app credentials here
+
+        public static string AppId = "";
+        public static string AppSecret = "";
     }
 }

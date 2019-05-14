@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -233,6 +234,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hidden\AdminCredentials.cs" />
     <Compile Include="Hidden\FacebookData.cs" />
     <Compile Include="Migrations\201708221336279_InitialModel.cs" />
     <Compile Include="Migrations\201708221336279_InitialModel.Designer.cs">
@@ -261,6 +263,10 @@
     <Compile Include="Migrations\201708271046586_AddFullPricePropertyToOrderTable.cs" />
     <Compile Include="Migrations\201708271046586_AddFullPricePropertyToOrderTable.Designer.cs">
       <DependentUpon>201708271046586_AddFullPricePropertyToOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905141518429_SeedAdmin.cs" />
+    <Compile Include="Migrations\201905141518429_SeedAdmin.Designer.cs">
+      <DependentUpon>201905141518429_SeedAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -570,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708271046586_AddFullPricePropertyToOrderTable.resx">
       <DependentUpon>201708271046586_AddFullPricePropertyToOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141518429_SeedAdmin.resx">
+      <DependentUpon>201905141518429_SeedAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
